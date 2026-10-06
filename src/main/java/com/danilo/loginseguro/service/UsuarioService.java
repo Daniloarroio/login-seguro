@@ -27,6 +27,7 @@ public class UsuarioService {
             String email,
             String senha) {
 
+
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException(
                     "O nome é obrigatório.");
@@ -55,16 +56,20 @@ public class UsuarioService {
         usuario.setNome(nome.trim());
         usuario.setEmail(emailNormalizado);
 
-        // Criptografa a senha
         usuario.setSenha(
                 passwordEncoder.encode(senha)
         );
 
-        // Todo cadastro público começa como usuário comum
         usuario.setRoles(
                 Set.of("ROLE_USER")
         );
 
-        return usuarioRepository.save(usuario);
-    }
+
+Usuario usuarioSalvo = usuarioRepository.save(usuario);
+
+System.out.println("========== USUARIO SALVO ==========");
+System.out.println("ID: " + usuarioSalvo.getId());
+System.out.println("Email: " + usuarioSalvo.getEmail());
+
+return usuarioSalvo;    }
 }

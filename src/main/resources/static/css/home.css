@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.header {
+    height: 70px;
+    padding: 0 30px;
+    background-color: #2563eb;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-container {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-card {
+    width: 500px;
+    padding: 40px;
+
+    background-color: white;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    text-align: center;
+}
+
+.home-card h2 {
+    margin-bottom: 15px;
+}

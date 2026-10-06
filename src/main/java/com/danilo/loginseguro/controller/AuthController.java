@@ -24,13 +24,13 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "auth/login";
+        return "login";
     }
 
     @GetMapping("/cadastro")
-    public String cadastro() {
-        return "auth/cadastro";
-    }
+public String cadastro() {
+    return "cadastro";
+}
 
     @PostMapping("/cadastro")
     public String cadastrar(
@@ -39,6 +39,12 @@ public class AuthController {
             @RequestParam String senha,
             @RequestParam String confirmarSenha,
             RedirectAttributes redirectAttributes) {
+                System.out.println("========== CADASTRO ==========");
+System.out.println("Nome: " + nome);
+System.out.println("Email: " + email);
+System.out.println("Senha: " + senha);
+System.out.println("Confirmar senha: " + confirmarSenha);
+System.out.println("==============================");
 
         if (!senha.equals(confirmarSenha)) {
             redirectAttributes.addFlashAttribute(
