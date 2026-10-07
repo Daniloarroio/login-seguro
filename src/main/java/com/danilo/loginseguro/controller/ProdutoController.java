@@ -24,4 +24,24 @@ public class ProdutoController {
 
         return "redirect:/home";
     }
+
+    @PostMapping("/produtos/editar")
+    public String editar(
+            @RequestParam String id,
+            @RequestParam String nome,
+            @RequestParam String descricao,
+            @RequestParam Double valor) {
+
+        produtoService.editar(id, nome, descricao, valor);
+
+        return "redirect:/home";
+    }
+
+    @PostMapping("/produtos/excluir")
+    public String excluir(@RequestParam String id) {
+
+        produtoService.excluir(id);
+
+        return "redirect:/home";
+    }
 }
