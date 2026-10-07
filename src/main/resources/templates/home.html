@@ -26,19 +26,85 @@
 
         <div class="home-card">
 
-            <h2>Bem-vindo!</h2>
+            <h2>Produtos disponíveis</h2>
 
-            <p>
-                Você está logado no sistema.
-            </p>
+            <div class="produto">
+                <label>
+                    <input type="checkbox" class="produto-checkbox" data-preco="3.00">
+                    Caneta
+                </label>
 
-            <p>
-                Esta é a página inicial do Login Seguro.
-            </p>
+                <span>R$ 3,00</span>
+            </div>
+
+            <div class="produto">
+                <label>
+                    <input type="checkbox" class="produto-checkbox" data-preco="2.00">
+                    Lápis
+                </label>
+
+                <span>R$ 2,00</span>
+            </div>
+
+            <div class="produto">
+                <label>
+                    <input type="checkbox" class="produto-checkbox" data-preco="5.00">
+                    Borracha
+                </label>
+
+                <span>R$ 5,00</span>
+            </div>
+
+            <div class="total">
+                <strong>Total:</strong>
+                <span id="total">R$ 0,00</span>
+            </div>
+
+            <button type="button" id="btnComprar">
+                Comprar
+            </button>
 
         </div>
 
+        <div class="produto-cadastro">
+
+    <h2>Cadastrar produto</h2>
+
+    <form th:action="@{/produtos}" method="post">
+
+        <label for="nome">Nome</label>
+        <input
+            type="text"
+            id="nome"
+            name="nome"
+            required>
+
+        <label for="descricao">Descrição</label>
+        <input
+            type="text"
+            id="descricao"
+            name="descricao">
+
+        <label for="valor">Valor</label>
+        <input
+            type="number"
+            id="valor"
+            name="valor"
+            step="0.01"
+            min="0.01"
+            required>
+
+        <button type="submit">
+            Cadastrar produto
+        </button>
+
+    </form>
+
+</div>
+
     </main>
+
+    <script th:src="@{/js/home.js}"></script>
 
 </body>
 
