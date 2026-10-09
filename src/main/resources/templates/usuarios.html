@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gerenciar usuários - Login Seguro</title>
+
+    <link rel="stylesheet" th:href="@{/css/usuarios.css}">
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <div class="logo">
+            Login Seguro
+        </div>
+
+        <div class="usuario">
+
+            <a th:href="@{/home}">
+                Voltar
+            </a>
+
+            <form th:action="@{/logout}" method="post">
+                <button type="submit">
+                    Sair
+                </button>
+            </form>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <section class="cadastro-usuario">
+
+            <h1>Gerenciar usuário</h1>
+
+            <div
+                class="mensagem sucesso"
+                th:if="${sucesso}"
+                th:text="${sucesso}">
+            </div>
+
+            <div
+                class="mensagem erro"
+                th:if="${erro}"
+                th:text="${erro}">
+            </div>
+
+            <form
+                th:action="@{/usuarios}"
+                method="post">
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="E-mail do usuário"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="role">
+                        Tipo de usuário
+                    </label>
+
+                    <select id="role" name="role">
+
+                        <option value="ROLE_USER">
+                            Usuário
+                        </option>
+
+                        <option value="ROLE_SYSTEM">
+                            System
+                        </option>
+
+                        <option value="ROLE_ADMIN">
+                            Administrador
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit">
+                    Atualizar usuário
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -27,7 +27,6 @@ public class UsuarioService {
             String email,
             String senha) {
 
-
         if (nome == null || nome.isBlank()) {
             throw new IllegalArgumentException(
                     "O nome é obrigatório.");
@@ -64,12 +63,39 @@ public class UsuarioService {
                 Set.of("ROLE_USER")
         );
 
+        Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
-Usuario usuarioSalvo = usuarioRepository.save(usuario);
+        System.out.println("========== USUARIO SALVO ==========");
+        System.out.println("ID: " + usuarioSalvo.getId());
+        System.out.println("Email: " + usuarioSalvo.getEmail());
 
-System.out.println("========== USUARIO SALVO ==========");
-System.out.println("ID: " + usuarioSalvo.getId());
-System.out.println("Email: " + usuarioSalvo.getEmail());
+        return usuarioSalvo;
+    }
 
-return usuarioSalvo;    }
+   public Usuario atualizarRolePorAdmin(
+        String email,
+        String role) {
+
+    if (email == null || email.isBlank()) {
+        throw new IllegalArgumentException(
+                "O e-mail é obrigatório.");
+    }
+
+    String emailNormalizado =
+            email.trim().toLowerCase();
+
+    Usuario usuario = usuarioRepository.findByEmail(emailNormalizado)
+            .orElseThrow(() -> new IllegalArgumentException(
+                    "Usuário não encontrado."));
+
+    if (role == null || role.isBlank()) {
+        role = "ROLE_USER";
+    }
+
+    usuario.setRoles(
+            Set.of(role)
+    );
+
+    return usuarioRepository.save(usuario);
+}
 }

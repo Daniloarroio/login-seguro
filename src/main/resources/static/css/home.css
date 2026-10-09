@@ -35,6 +35,15 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+.btn-usuarios {
+    border: none;
+    background-color: white;
+    color: #2563eb;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
 
 .container {
     width: 90%;

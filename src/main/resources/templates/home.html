@@ -21,6 +21,13 @@
         <div class="usuario">
             <span>Bem-vindo!</span>
 
+            <a
+        th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+        th:href="@{/usuarios}"
+        class="btn-usuarios">
+        Gerenciar usuários
+    </a>
+
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="btn-sair">Sair</button>
             </form>
@@ -29,11 +36,16 @@
 
     <main class="container">
 
-        <section class="cadastro-produto">
+        <section class="cadastro-produto"
+        th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''SYSTEM'')')}">
 
             <h1>Cadastrar produto</h1>
 
             <form th:action="@{/produtos}" method="post">
+            <input
+                type="hidden"
+                th:name="${_csrf.parameterName}"
+                th:value="${_csrf.token}">
 
                 <div class="campo">
                     <label for="nome">Nome</label>
@@ -103,8 +115,8 @@
                     </strong>
 
 
-                    <div class="compra-produto">
-
+                    <div class="compra-produto"
+                     th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''USER'')')}">
                         <label>
                             <input
                                 type="checkbox"
@@ -118,8 +130,8 @@
                     </div>
 
 
-                    <div class="acoes-produto">
-
+                    <div class="acoes-produto"
+                    th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''SYSTEM'')')}">
                         <button
                             type="button"
                             class="btn btn-primary btn-editar"
@@ -133,6 +145,10 @@
                             th:action="@{/produtos/excluir}"
                             method="post">
 
+                             <input
+                            type="hidden"
+                            th:name="${_csrf.parameterName}"
+                            th:value="${_csrf.token}">
                             <input
                                 type="hidden"
                                 name="id"
@@ -179,6 +195,10 @@
                                     th:action="@{/produtos/editar}"
                                     method="post">
 
+                                       <input
+                                        type="hidden"
+                                        th:name="${_csrf.parameterName}"
+                                        th:value="${_csrf.token}">
                                     <div class="modal-body">
 
                                         <input
@@ -280,8 +300,14 @@
         <form
             class="total-compra"
             th:action="@{/compras}"
-            method="post">
-
+            method="post"
+            th:if="${#authorization.expression('hasAnyRole(''ADMIN'', ''USER'')')}">
+          
+          <input
+        type="hidden"
+        th:name="${_csrf.parameterName}"
+        th:value="${_csrf.token}">
+        
             <h2>
                 Total da compra:
                 R$

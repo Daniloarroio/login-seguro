@@ -1,0 +1,88 @@
+# Login Seguro
+
+Sistema de autenticação e gerenciamento de produtos desenvolvido com Java Spring Boot, Thymeleaf e MongoDB Atlas.
+
+O projeto foi desenvolvido como atividade acadêmica com foco em autenticação, autorização por perfis de usuário, segurança de senhas e armazenamento de dados em banco de dados MongoDB.
+
+## Tecnologias utilizadas
+
+- Java 21
+- Spring Boot
+- Spring Security
+- Spring Data MongoDB
+- Spring Session Data MongoDB
+- Thymeleaf
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- MongoDB Atlas
+- Maven
+- Git e GitHub
+
+## Funcionalidades
+
+O sistema possui as seguintes funcionalidades:
+
+- Cadastro de usuários
+- Login
+- Logout
+- Criptografia das senhas
+- Validação dos dados de cadastro
+- Controle de acesso por perfil
+- Cadastro de produtos
+- Edição de produtos
+- Exclusão de produtos
+- Seleção de produtos para compra
+- Registro de compras
+- Gerenciamento do tipo de usuário
+- Armazenamento dos dados no MongoDB Atlas
+- Armazenamento das sessões no MongoDB
+- Proteção das rotas utilizando Spring Security
+- Proteção CSRF nos formulários
+
+## Perfis de usuário
+
+O sistema possui três perfis:
+
+### USER
+
+O usuário comum pode:
+
+- acessar a página inicial;
+- visualizar os produtos;
+- realizar compras.
+
+### SYSTEM
+
+O usuário do tipo System pode:
+
+- acessar a página inicial;
+- cadastrar produtos;
+- editar produtos;
+- excluir produtos.
+
+Não possui acesso ao gerenciamento de usuários nem à realização de compras.
+
+### ADMIN 
+
+conta ADMIM
+E-mail admin@senha12345678
+senha 12345678
+
+O administrador possui acesso às funcionalidades do sistema:
+
+- gerenciar usuários;
+- cadastrar produtos;
+- editar produtos;
+- excluir produtos;
+- realizar compras.
+
+## Banco de dados
+
+O sistema utiliza o MongoDB Atlas para armazenamento dos dados.
+
+O banco utilizado é:
+
+```text
+login_seguro
